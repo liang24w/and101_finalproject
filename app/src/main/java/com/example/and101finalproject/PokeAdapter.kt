@@ -9,18 +9,25 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class PokeAdapter (private val petList: List<String>, private val pokeNameList: List<String>, private val pokeIdList: List<String>) : RecyclerView.Adapter<PokeAdapter.ViewHolder>() {
+class PokeAdapter (
+    private val pokeList: List<String>,
+    private val pokeNameList: List<String>,
+    private val pokeIdList: List<String>,
+    private val pokeDescList: List<String>
+) : RecyclerView.Adapter<PokeAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val pokeImage: ImageView
         val nameView: TextView
         val idView: TextView
+        val pokeDescView: TextView
 
         init {
             // Find our RecyclerView item's ImageView for future use
             pokeImage = view.findViewById(R.id.poke_image)
             nameView = view.findViewById(R.id.pokeName)
             idView = view.findViewById(R.id.pokeId)
+            pokeDescView = view.findViewById(R.id.pokeDesc)
         }
     }
 
@@ -32,17 +39,18 @@ class PokeAdapter (private val petList: List<String>, private val pokeNameList: 
         return ViewHolder(view)
     }
 
-    override fun getItemCount() = petList.size
+    override fun getItemCount() = pokeList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView)
-            .load(petList[position])
+            .load(pokeList[position])
             .centerCrop()
             .into(holder.pokeImage)
 
         // passing in pokeName and pokeId from MainActivity
         holder.nameView.setText(pokeNameList[position])
-        holder.idView.setText("National Pokedex ID: #" + pokeIdList[position])
+        holder.idView.setText("Ability: " + pokeIdList[position])
+        holder.pokeDescView.setText(pokeDescList[position])
 
         // `holder` can used to reference any View within the RecyclerView item's layout file
         holder.pokeImage.setOnClickListener {

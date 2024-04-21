@@ -19,15 +19,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: PokeAdapter
     private lateinit var pokeNameList: MutableList<String>
     private lateinit var pokeIdList: MutableList<String>
+    private lateinit var pokeDescList: MutableList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        rvPokes = findViewById(R.id.pet_list)
+        rvPokes = findViewById(R.id.poke_list)
         pokeList = mutableListOf()
         pokeNameList = mutableListOf()
         pokeIdList = mutableListOf()
-        adapter = PokeAdapter(pokeList, pokeNameList, pokeIdList)
+        pokeDescList = mutableListOf()
+        adapter = PokeAdapter(pokeList, pokeNameList, pokeIdList, pokeDescList)
 
         rvPokes.adapter = adapter
         rvPokes.layoutManager = LinearLayoutManager(this@MainActivity)
@@ -38,8 +40,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun getPokemonImageArray() {
         val client = AsyncHttpClient()
+        val client2 = AsyncHttpClient()
         for (i in 0 until 10) {
             val url = "https://pokeapi.co/api/v2/pokemon/$i"
+            val descurl = "https://pokeapi.co/api/v2/pokemon-species/$i"
 
             client.get(url, object : JsonHttpResponseHandler() {
                 override fun onFailure(
@@ -58,8 +62,9 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     val pokeImageUrl =
                         pokejson.jsonObject.getJSONObject("sprites").getString("front_default")
-                    val pokeName = pokejson.jsonObject.getJSONObject("species").getString("name")
-                    val pokeId = pokejson.jsonObject.getString("id")
+                    val pokeName = pokejson.jsonObject.getString("name").capitalize()
+                    val pokeId = pokejson.jsonObject.getJSONArray("abilities").getJSONObject(0)
+                        .getJSONObject("ability").getString("name")
 
                     pokeIdList.add(pokeId)
                     pokeNameList.add(pokeName)
@@ -67,7 +72,28 @@ class MainActivity : AppCompatActivity() {
 
                     adapter.notifyDataSetChanged()
                 }
-            })
+            }) //end client
+
+            client2.get(descurl, object : JsonHttpResponseHandler() {
+                override fun onFailure(
+                    statusCode: Int,
+                    headers: Headers?,
+                    response: String,
+                    throwable: Throwable?
+                ) {
+                    Log.d("Pokemon Description Error", response)
+                }
+
+                override fun onSuccess(statusCode: Int, headers: Headers?, json: JsonHttpResponseHandler.JSON) {
+                    val pokeDesc = json.jsonObject.getJSONArray("flavor_text_entries").getJSONObject(0).getString("flavor_text")
+
+                    pokeDescList.add(pokeDesc)
+
+                    adapter.notifyDataSetChanged()
+                }
+
+            }) //end client2
+
         }
     }
 }

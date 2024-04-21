@@ -16,13 +16,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/poke_image" />
+        app:layout_constraintLeft_toRightOf="@+id/poke_image"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/pokeId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/pokeName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#0000FF"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/pokeDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/pokeName"
-        app:layout_constraintLeft_toRightOf="@+id/poke_image" />
+        app:layout_constraintLeft_toRightOf="@+id/poke_image"
+        android:layout_marginTop="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
