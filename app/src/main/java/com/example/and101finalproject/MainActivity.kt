@@ -2,7 +2,6 @@ package com.example.and101finalproject
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
-import okhttp3.internal.http2.Header
-import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var pokeList: MutableList<String>

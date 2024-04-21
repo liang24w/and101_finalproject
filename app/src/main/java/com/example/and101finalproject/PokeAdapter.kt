@@ -49,7 +49,7 @@ class PokeAdapter (
 
         // passing in pokeName and pokeId from MainActivity
         holder.nameView.setText(pokeNameList[position])
-        holder.idView.setText("Ability: " + pokeIdList[position])
+        holder.idView.setText(pokeIdList[position])
         holder.pokeDescView.setText(pokeDescList[position])
 
         // `holder` can used to reference any View within the RecyclerView item's layout file
