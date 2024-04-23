@@ -24,9 +24,14 @@ class SecondPokeAdapter (
         val nameView: TextView
         val idView: TextView
         val pokeDescView: TextView
+        val button: Button
 
         init {
             // Find our RecyclerView item's ImageView for future use
+            button = view.findViewById(R.id.adoptButton)
+            button.isEnabled = false
+            button.isVisible = false
+            button.height = 0
             pokeImage = view.findViewById(R.id.poke_image)
             nameView = view.findViewById(R.id.pokeName)
             idView = view.findViewById(R.id.pokeId)

@@ -3,15 +3,15 @@
 ## Table of Contents
 
 1. [App Overview](#App-Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-1. [Build Notes](#Build-Notes)
+2. [Product Spec](#Product-Spec)
+3. [Wireframes](#Wireframes)
+4. [Build Notes](#Build-Notes)
 
 ## App Overview
 
 ### Description 
 
-**This app will allow you to adopt any Pokemon from the Pokemon API and add it to your roster in a seperate location and you may have them as buddies on your team.**
+**This app will allow you to adopt any Pokemon from the Pokemon API and add it to your roster in a separate location and you may have them as buddies on your team.**
 
 ### App Evaluation
 
@@ -34,14 +34,14 @@ Scope: While technically challenging to implement features like AR integration o
 
 Required Features:
 
-- **Browse Pokemon library through API**
-- **Check chosen Pokemon through a Recycler View**
-- **Adopt Pokemon by clicking a button**
-- **Futhermore, the app will be in an appealing style to pokemon fans**
+- [x] **Browse Pokemon library through API**
+- [x] **Check chosen Pokemon through a Recycler View**
+- [x] **Adopt Pokemon by clicking a button**
+- [x] **Furthermore, the app will be in an appealing style to pokemon fans**
 
 Optional Features:
 
-- **It will go to another page to show the shopping cart**
+- [x] **It will go to another page to show the shopping cart**
 
 
 ### 2. Chosen API(s)
@@ -54,8 +54,8 @@ Optional Features:
 
 Required Feature
 
-- **User will click "Add Pokemon" button on a pokemon in the Recycler View if they like that pokemon**
-- **Then, they can click Checkout to adopt the pokemon and have it be delivered to their address**
+- [x] **User will click "Add Pokemon" button on a pokemon in the Recycler View if they like that pokemon**
+- [x] **Then, they can click Checkout to adopt the pokemon and have it be delivered to their address**
 
 ## Wireframes
 
@@ -73,6 +73,14 @@ Here's a place for any other notes on the app, it's creation
 process, or what you learned this unit!  
 
 For Milestone 2, include **2+ Videos/GIFs** of the build process here!
+
+Before third screen:
+
+<img src='https://i.imgur.com/SaWqXCl.gif' title='Gif1' width='' alt='FIRST GIF' />
+
+After:
+
+<img src='https://i.imgur.com/p8qUTkS.gif' title='Gif2' width='' alt='SECOND GIF' />
 
 ## License
 
