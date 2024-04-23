@@ -29,9 +29,7 @@ class SecondPokeAdapter (
         init {
             // Find our RecyclerView item's ImageView for future use
             button = view.findViewById(R.id.adoptButton)
-            button.isEnabled = false
-            button.isVisible = false
-            button.height = 0
+            button.text = "Unadopt"
             pokeImage = view.findViewById(R.id.poke_image)
             nameView = view.findViewById(R.id.pokeName)
             idView = view.findViewById(R.id.pokeId)
@@ -63,6 +61,15 @@ class SecondPokeAdapter (
         // `holder` can used to reference any View within the RecyclerView item's layout file
         holder.pokeImage.setOnClickListener {
             Toast.makeText(holder.itemView.context, "clicked ${pokeNameList[position]}", Toast.LENGTH_SHORT).show()
+        }
+
+        holder.button.setOnClickListener() {
+            pokeList.removeAt(position)
+            pokeNameList.removeAt(position)
+            pokeDescList.removeAt(position)
+            pokeIdList.removeAt(position)
+
+            this.notifyDataSetChanged()
         }
     }
 }

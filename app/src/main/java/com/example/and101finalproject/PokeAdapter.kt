@@ -12,11 +12,10 @@ import com.bumptech.glide.Glide
 
 
 class PokeAdapter (
-    private val pokeList: List<String>,
-    private val pokeNameList: List<String>,
-    private val pokeIdList: List<String>,
-    private val pokeDescList: List<String>,
-    private val pokeHabList: List<String>,
+    private val pokeList: Array<String>,
+    private val pokeNameList: Array<String>,
+    private val pokeIdList: Array<String>,
+    private val pokeDescList: Array<String>,
     private val buttonClickListener: ButtonClickListener
 ) : RecyclerView.Adapter<PokeAdapter.ViewHolder>() {
 
