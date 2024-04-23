@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="cobalt_blue">#0047AB</color>
     <color name="sky_blue">#87CEEB</color>
+    <color name="red">#FF0000</color>
 
     <color name="normal">#A8A77A</color>
     <color name="fire">#EE8130</color>

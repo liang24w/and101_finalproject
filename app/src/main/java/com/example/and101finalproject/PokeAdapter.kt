@@ -87,8 +87,9 @@ class PokeAdapter (
         }
 
         // `holder` can used to reference any View within the RecyclerView item's layout file
-        holder.pokeImage.setOnClickListener {
+        holder.pokeImage.setOnLongClickListener {
             Toast.makeText(holder.itemView.context, "This is ${pokeNameList[position]}, a ${pokeIdList[position]} type Pokemon!", Toast.LENGTH_SHORT).show()
+            true
         }
         holder.bind(pokeList[position], pokeNameList[position], pokeIdList[position], pokeDescList[position])
     }
