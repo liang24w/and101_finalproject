@@ -1,10 +1,12 @@
 package com.example.and101finalproject
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +14,11 @@ import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
 import kotlin.random.Random
+interface ButtonClickListener {
+    fun onButtonClick(a: String, b: String, c: String, d: String)
+}
 
-class ViewPokemon : AppCompatActivity() {
+class ViewPokemon : AppCompatActivity(), ButtonClickListener {
 
     private lateinit var pokeList: MutableList<String>
     private lateinit var rvPokes: RecyclerView
@@ -21,23 +26,32 @@ class ViewPokemon : AppCompatActivity() {
     private lateinit var pokeNameList: MutableList<String>
     private lateinit var pokeIdList: MutableList<String>
     private lateinit var pokeDescList: MutableList<String>
+
+    val pokeList2 : ArrayList<String> = ArrayList()
+    val pokeNameList2 : ArrayList<String> = ArrayList()
+    val pokeIdList2 : ArrayList<String> = ArrayList()
+    val pokeDescList2 : ArrayList<String> = ArrayList()
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_pokemon)
 
-//        // Set OnClickListener outside onCreate
-//        nextBtn.setOnClickListener {
-//            // Define actions to perform when the button is clicked
-//            // For example, start a new activity:
-//            val intent = Intent(this, AdoptPokemonForm::class.java)
-//            startActivity(intent)
-//        }
         rvPokes = findViewById(R.id.poke_list)
         pokeList = mutableListOf()
         pokeNameList = mutableListOf()
         pokeIdList = mutableListOf()
         pokeDescList = mutableListOf()
-        adapter = PokeAdapter(pokeList, pokeNameList, pokeIdList, pokeDescList)
+        adapter = PokeAdapter(pokeList, pokeNameList, pokeIdList, pokeDescList, this)
+
+        findViewById<Button>(R.id.checkoutAdoption).setOnClickListener() {
+            val intent = Intent(this, AdoptPokemonForm::class.java)
+            intent.putExtra("a", pokeList2)
+            intent.putExtra("b", pokeNameList2)
+            intent.putExtra("c", pokeIdList2)
+            intent.putExtra("d", pokeDescList2)
+            startActivity(intent)
+        }
 
         rvPokes.adapter = adapter
         rvPokes.layoutManager = LinearLayoutManager(this)
@@ -50,7 +64,7 @@ class ViewPokemon : AppCompatActivity() {
     private fun getPokemonImageArray() {
         val client = AsyncHttpClient()
         val client2 = AsyncHttpClient()
-        for (i in 0 until 10) {
+        for (i in 0 until 30) {
             val k = Random.nextInt(1,500)
             val url = "https://pokeapi.co/api/v2/pokemon/$k"
             val descurl = "https://pokeapi.co/api/v2/pokemon-species/$k"
@@ -104,5 +118,12 @@ class ViewPokemon : AppCompatActivity() {
 
             }) //end client2
         }
+    }
+
+    override fun onButtonClick(a: String, b: String, c: String, d: String) {
+        pokeList2.add(a)
+        pokeNameList2.add(b)
+        pokeIdList2.add(c)
+        pokeDescList2.add(d)
     }
 }

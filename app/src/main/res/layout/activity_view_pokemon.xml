@@ -10,16 +10,16 @@
         android:id="@+id/poke_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/finalizeAdoption"
+        app:layout_constraintBottom_toTopOf="@+id/checkoutAdoption"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/finalizeAdoption"
+        android:id="@+id/checkoutAdoption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Finalize Your Adopted Pokemon!"
+        android:text="Checkout Your Adopted Pokemon!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
