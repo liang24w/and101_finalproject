@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
+import kotlin.random.Random
 
 class ViewPokemon : AppCompatActivity() {
 
@@ -50,8 +51,9 @@ class ViewPokemon : AppCompatActivity() {
         val client = AsyncHttpClient()
         val client2 = AsyncHttpClient()
         for (i in 0 until 10) {
-            val url = "https://pokeapi.co/api/v2/pokemon/$i"
-            val descurl = "https://pokeapi.co/api/v2/pokemon-species/$i"
+            val k = Random.nextInt(1,500)
+            val url = "https://pokeapi.co/api/v2/pokemon/$k"
+            val descurl = "https://pokeapi.co/api/v2/pokemon-species/$k"
 
             client.get(url, object : JsonHttpResponseHandler() {
                 override fun onFailure(
