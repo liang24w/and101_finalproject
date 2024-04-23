@@ -43,7 +43,7 @@ The following EXTRA features are implemented:
 
 Here's a video that demos all of the app's implemented features:
 
-<img src='https://youtu.be/j6nDm-x07uM' title='Video Demo' width='' alt='Video Demo' />
+[![Watch the video]](https://youtu.be/j6nDm-x07uM)
 
 VIDEO created with **Screen Recorder**
 
