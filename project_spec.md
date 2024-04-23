@@ -76,7 +76,7 @@ For Milestone 2, include **2+ Videos/GIFs** of the build process here!
 
 Before third screen:
 
-<img src='https://i.imgur.com/SaWqXCl.mp4' title='Gif1' width='' alt='FIRST GIF' />
+<img src='https://i.imgur.com/SgpbSmK.gif' title='Gif1' width='' alt='FIRST GIF' />
 
 After:
 
