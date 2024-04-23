@@ -23,14 +23,13 @@
 
     <TextView
         android:id="@+id/pokeId"
-        android:paddingLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/pokeName"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:textColor="#628be3" />
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/pokeDesc"

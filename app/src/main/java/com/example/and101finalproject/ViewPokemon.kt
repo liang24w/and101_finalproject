@@ -26,6 +26,7 @@ class ViewPokemon : AppCompatActivity(), ButtonClickListener {
     private lateinit var pokeNameList: MutableList<String>
     private lateinit var pokeIdList: MutableList<String>
     private lateinit var pokeDescList: MutableList<String>
+    private lateinit var pokeHabList: MutableList<String>
 
     val pokeList2 : ArrayList<String> = ArrayList()
     val pokeNameList2 : ArrayList<String> = ArrayList()
@@ -42,7 +43,8 @@ class ViewPokemon : AppCompatActivity(), ButtonClickListener {
         pokeNameList = mutableListOf()
         pokeIdList = mutableListOf()
         pokeDescList = mutableListOf()
-        adapter = PokeAdapter(pokeList, pokeNameList, pokeIdList, pokeDescList, this)
+        pokeHabList = mutableListOf()
+        adapter = PokeAdapter(pokeList, pokeNameList, pokeIdList, pokeDescList, pokeHabList, this)
 
         findViewById<Button>(R.id.checkoutAdoption).setOnClickListener() {
             val intent = Intent(this, AdoptPokemonForm::class.java)
@@ -63,7 +65,7 @@ class ViewPokemon : AppCompatActivity(), ButtonClickListener {
 
     private fun getPokemonImageArray() {
         val client = AsyncHttpClient()
-        val client2 = AsyncHttpClient()
+
         for (i in 0 until 30) {
             val k = Random.nextInt(1,500)
             val url = "https://pokeapi.co/api/v2/pokemon/$k"
@@ -87,8 +89,7 @@ class ViewPokemon : AppCompatActivity(), ButtonClickListener {
                     val pokeImageUrl =
                         pokejson.jsonObject.getJSONObject("sprites").getString("front_default")
                     val pokeName = pokejson.jsonObject.getString("name").capitalize()
-                    val pokeId = pokejson.jsonObject.getJSONArray("abilities").getJSONObject(0)
-                        .getJSONObject("ability").getString("name")
+                    val pokeId = pokejson.jsonObject.getJSONArray("types").getJSONObject(0).getJSONObject("type").getString("name")
 
                     pokeIdList.add(pokeId)
                     pokeNameList.add(pokeName)
@@ -98,7 +99,7 @@ class ViewPokemon : AppCompatActivity(), ButtonClickListener {
                 }
             }) //end client
 
-            client2.get(descurl, object : JsonHttpResponseHandler() {
+            client.get(descurl, object : JsonHttpResponseHandler() {
                 override fun onFailure(
                     statusCode: Int,
                     headers: Headers?,
@@ -110,13 +111,15 @@ class ViewPokemon : AppCompatActivity(), ButtonClickListener {
 
                 override fun onSuccess(statusCode: Int, headers: Headers?, json: JsonHttpResponseHandler.JSON) {
                     val pokeDesc = json.jsonObject.getJSONArray("flavor_text_entries").getJSONObject(0).getString("flavor_text")
+//                    val pokeHabitat = json.jsonObject.getJSONObject("habitat").getString("name")
 
                     pokeDescList.add(pokeDesc)
+//                    pokeHabList.add(pokeHabitat)
 
                     adapter.notifyDataSetChanged()
                 }
 
-            }) //end client2
+            }) //end client
         }
     }
 

@@ -16,6 +16,7 @@ class PokeAdapter (
     private val pokeNameList: List<String>,
     private val pokeIdList: List<String>,
     private val pokeDescList: List<String>,
+    private val pokeHabList: List<String>,
     private val buttonClickListener: ButtonClickListener
 ) : RecyclerView.Adapter<PokeAdapter.ViewHolder>() {
 
@@ -62,9 +63,32 @@ class PokeAdapter (
         holder.idView.setText(pokeIdList[position])
         holder.pokeDescView.setText(pokeDescList[position])
 
+        // setting background of type
+        when (pokeIdList[position]) {
+            "normal" -> holder.idView.setBackgroundResource(R.color.normal)
+            "fire" -> holder.idView.setBackgroundResource(R.color.fire)
+            "water" -> holder.idView.setBackgroundResource(R.color.water)
+            "electric" -> holder.idView.setBackgroundResource(R.color.electric)
+            "grass" -> holder.idView.setBackgroundResource(R.color.grass)
+            "ice" -> holder.idView.setBackgroundResource(R.color.ice)
+            "fighting" -> holder.idView.setBackgroundResource(R.color.fighting)
+            "poison" -> holder.idView.setBackgroundResource(R.color.poison)
+            "ground" -> holder.idView.setBackgroundResource(R.color.ground)
+            "flying" -> holder.idView.setBackgroundResource(R.color.flying)
+            "psychic" -> holder.idView.setBackgroundResource(R.color.psychic)
+            "bug" -> holder.idView.setBackgroundResource(R.color.bug)
+            "rock" -> holder.idView.setBackgroundResource(R.color.rock)
+            "ghost" -> holder.idView.setBackgroundResource(R.color.ghost)
+            "dragon" -> holder.idView.setBackgroundResource(R.color.dragon)
+            "dark" -> holder.idView.setBackgroundResource(R.color.dark)
+            "steel" -> holder.idView.setBackgroundResource(R.color.steel)
+            "fairy" -> holder.idView.setBackgroundResource(R.color.fairy)
+            else -> holder.idView.setBackgroundResource(android.R.color.black) // Default color
+        }
+
         // `holder` can used to reference any View within the RecyclerView item's layout file
         holder.pokeImage.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "clicked ${pokeNameList[position]}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, "This is ${pokeNameList[position]}, a ${pokeIdList[position]} type Pokemon!", Toast.LENGTH_SHORT).show()
         }
         holder.bind(pokeList[position], pokeNameList[position], pokeIdList[position], pokeDescList[position])
     }
